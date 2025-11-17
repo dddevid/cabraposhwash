@@ -156,7 +156,7 @@ animatedElements.forEach((element, index) => {
     observer.observe(element);
 });
 
-// Pricing toggle functionality
+// Pricing toggle functionality (supports cars, mpv and taxi)
 const pricingToggle = document.querySelector('.pricing-toggle');
 const toggleOptions = document.querySelectorAll('.toggle-option');
 const pricingCards = document.querySelectorAll('.pricing-card');
@@ -174,13 +174,20 @@ if (pricingToggle) {
             pricingCards.forEach(card => {
                 const carsPrice = card.querySelector('.cars-price');
                 const mpvPrice = card.querySelector('.mpv-price');
+                const taxiPrice = card.querySelector('.taxi-price');
                 
                 if (vehicleType === 'cars') {
                     if (carsPrice) carsPrice.style.display = 'inline';
                     if (mpvPrice) mpvPrice.style.display = 'none';
-                } else {
+                    if (taxiPrice) taxiPrice.style.display = 'none';
+                } else if (vehicleType === 'mpv') {
                     if (carsPrice) carsPrice.style.display = 'none';
                     if (mpvPrice) mpvPrice.style.display = 'inline';
+                    if (taxiPrice) taxiPrice.style.display = 'none';
+                } else if (vehicleType === 'taxi') {
+                    if (carsPrice) carsPrice.style.display = 'none';
+                    if (mpvPrice) mpvPrice.style.display = 'none';
+                    if (taxiPrice) taxiPrice.style.display = 'inline';
                 }
             });
         });

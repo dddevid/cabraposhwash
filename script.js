@@ -166,25 +166,24 @@ if (pricingToggle) {
             toggleOptions.forEach(opt => opt.classList.remove('active'));
             option.classList.add('active');
             
-            // Update pricing display
+            // Update pricing display (support cars, mpv and taxi)
             pricingCards.forEach(card => {
                 const carsPrice = card.querySelector('.cars-price');
                 const mpvPrice = card.querySelector('.mpv-price');
+                const taxiPrice = card.querySelector('.taxi-price');
                 
                 if (vehicleType === 'cars') {
-                    if (carsPrice) {
-                        carsPrice.style.display = 'inline';
-                    }
-                    if (mpvPrice) {
-                        mpvPrice.style.display = 'none';
-                    }
-                } else {
-                    if (carsPrice) {
-                        carsPrice.style.display = 'none';
-                    }
-                    if (mpvPrice) {
-                        mpvPrice.style.display = 'inline';
-                    }
+                    if (carsPrice) carsPrice.style.display = 'inline';
+                    if (mpvPrice) mpvPrice.style.display = 'none';
+                    if (taxiPrice) taxiPrice.style.display = 'none';
+                } else if (vehicleType === 'mpv') {
+                    if (carsPrice) carsPrice.style.display = 'none';
+                    if (mpvPrice) mpvPrice.style.display = 'inline';
+                    if (taxiPrice) taxiPrice.style.display = 'none';
+                } else if (vehicleType === 'taxi') {
+                    if (carsPrice) carsPrice.style.display = 'none';
+                    if (mpvPrice) mpvPrice.style.display = 'none';
+                    if (taxiPrice) taxiPrice.style.display = 'inline';
                 }
             });
         });
